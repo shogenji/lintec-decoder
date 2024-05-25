@@ -118,7 +118,6 @@
         function startStreaming(stream) {
         video.srcObject = stream;
         video.play();
-        //streaming = true; // これがあるとエラーになる
         setCanvasSize(decoded);
 
         requestAnimationFrame(loop);
