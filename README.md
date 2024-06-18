@@ -7,4 +7,4 @@ https://shogenji.github.io/lintec-decoder/
 * カメラの使用を許可してください。
 * スマートフォンによっては表示が崩れる場合があります。
 * スマートフォンの向きを変えると表示が崩れます。
-
+* [WebRTC.org](https://webrtc.org/?hl=ja)のサンプルの一部を流用しています。
