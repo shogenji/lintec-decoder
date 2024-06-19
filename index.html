@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
     <meta charset="UTF-8">
     <title>Lintec Decoder - for Line-pattern carrier-screen images</title>
-    <script src="./js/adapter.js"></script>
 
     <link rel="stylesheet" href="css/main.css">    
 </head>
 <body>
-    <video id="camera" autoplay muted playsinline></video>
-    <canvas id="decoded"></canvas>
-
+    <div id="container">
+        <canvas id="decoded"></canvas>
+        <video id="camera" autoplay muted playsinline></video>
+        <p id="debug"></p>
+    </div>
+    
     <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
     <script src="js/main.js" async></script>
 </body>
