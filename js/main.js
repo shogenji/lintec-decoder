@@ -42,7 +42,7 @@ const constraints = {
 
 
 function handleSuccess(stream) {
-  window.stream = stream; // make stream available to browser console
+  window.stream = stream;
   video.srcObject = stream;
   video.play();
 
@@ -54,9 +54,6 @@ function handleSuccess(stream) {
       }
   });
   settings = currentTrack.getSettings();
-  /* let width = settings.width;
-  let height = settings.height; */
-  console.log("settings.width: " + settings.width + "  settings.height: " + settings.height);
 
   requestAnimationFrame(loop);
 }
@@ -68,17 +65,14 @@ function handleError(error) {
 navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
 
 function loop() {
-  // console.log("settings.width: " + settings.width + "  settings.height: " + settings.height);
-  let offset_x = (settings.width - offscreen.width) / 2;
-  let offset_y = (settings.height - offscreen.height) / 2;
+  let offset_x = (settings.height - offscreen.width) / 2;
+  let offset_y = (settings.width - offscreen.height) / 2;
 
   if (video.readyState === video.HAVE_ENOUGH_DATA) {
     offscreen_ctx.drawImage(video, offset_x, offset_y, offscreen.width, offscreen.height, 0, 0, offscreen.width, offscreen.height);
     let src = new Image();
     let dst = new Image();
 
-    // src = offscreen_ctx.getImageData(0, 0, 1280, 1280);
-    // dst = offscreen_ctx.createImageData(1280, 1280);
     src = offscreen_ctx.getImageData(0, 0, offscreen.width, offscreen.height);
     dst = offscreen_ctx.createImageData(offscreen.width, offscreen.height);
 
@@ -93,9 +87,7 @@ function loop() {
     }
 
 
-    // decoded_ctx.putImageData(src, 0, 0);
     decoded_ctx.putImageData(dst, 0, 0);
-    // decoded_ctx.putImageData(dst, 0, 0, offset_x, offset_y, canvas.width, canvas.height);
   }
   requestAnimationFrame(loop);
 }
